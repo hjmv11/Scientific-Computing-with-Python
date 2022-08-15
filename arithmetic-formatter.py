@@ -3,7 +3,7 @@
 def arithmetic_arranger(problems, show_answers=False):
   #initialize list for first operand, operators, second operand, and totals 
   first_line = []
-  second line = []
+  second_line = []
   dashes = []
   results = []
   
