@@ -43,16 +43,17 @@ def arithmetic_arranger(problems, show_answers=False):
     results.append(str(total).rjust(width))
 
   #create string for each line 
-  first_line_str = '    '.join(first_line) + '\n'
-  second_line_str = '    '.join(second_line) + '\n'
-  third_line_str = '    '.join(dashes) + '\n'
+  first_line_str = '    '.join(first_line)
+  second_line_str = '    '.join(second_line) 
+  third_line_str = '    '.join(dashes) 
   fourth_line_str = '    '.join(results)
 
   #create arranged_problems string depending on optional argument
   if show_answers:
-    arranged_problems = first_line_str + second_line_str + third_line_str + fourth_line_str
+    arranged_problems = first_line_str + '\n' + second_line_str + '\n' + third_line_str + '\n' + fourth_line_str
     return arranged_problems
   else:
-    
+    arranged_problems = first_line_str + '\n' + second_line_str + '\n' + third_line_str
+    return arranged_problems
 
   
