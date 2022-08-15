@@ -1,27 +1,32 @@
 
 
 def arithmetic_arranger(problems, show_answers=False):
-  #initialize list for first operand, operators, second operand, and totals 
+  #initialize list for first operand, operator with second operand, dash lines, and results 
   first_line = []
   second_line = []
   dashes = []
   results = []
+
+  if len(problems) > 5:
+    return "Error: Too many problems."
   
   #loop through all problems 
   for problem in problems:
     pieces = problem.split()
 
-    #situations that cause errors
-    assert problems.len > 5, "Error: Too many problems."
-    assert pieces[1] == '*' or pieces[1] == '/', "Error: Operator must be '+' or '-'."
-    assert pieces[0].isnumeric() == False or pieces[2].isnumeric() == False, "Error: Numbers must only contain digits."
-    assert pieces[0].len > 4 or pieces[2].len > 4, "Error: Numbers cannot be more than four digits."
+    #situations that cause error messages
+    if pieces[1] not in ('+','-'):
+      return "Error: Operator must be '+' or '-'."
+    if pieces[0].isnumeric() == False or pieces[2].isnumeric() == False:
+      return "Error: Numbers must only contain digits."
+    if len(pieces[0]) > 4 or len(pieces[2]) > 4:
+      return "Error: Numbers cannot be more than four digits."
 
     #calculate result
     total = 0 
     if pieces[1] == '+':
       total = int(pieces[0]) + int(pieces[2])      
-    else
+    else:
       total = int(pieces[0]) - int(pieces[2])
 
     #set width of problem
@@ -33,7 +38,7 @@ def arithmetic_arranger(problems, show_answers=False):
 
     #insert strings, right adjusted by width, into separate lists to print out later 
     first_line.append(pieces[0].rjust(width))
-    second_line.append(pieces[1] + pieces[2].rjsut(width-1))
+    second_line.append(pieces[1] + pieces[2].rjust(width-1))
     dashes.append(''.rjust(width,'-'))
     results.append(str(total).rjust(width))
 
@@ -46,7 +51,8 @@ def arithmetic_arranger(problems, show_answers=False):
   #create arranged_problems string depending on optional argument
   if show_answers:
     arranged_problems = first_line_str + second_line_str + third_line_str + fourth_line_str
+    return arranged_problems
   else:
-    arranged_problems = first_line_str + second_line_str + third_line_str
+    
 
-  return arranged_problems
+  
